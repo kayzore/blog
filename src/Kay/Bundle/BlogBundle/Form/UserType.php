@@ -21,7 +21,7 @@ class UserType extends AbstractType
             ->add('password')
             ->add('email')
             ->add('isActive')
-            ->add('roles', ChoiceType::class, array(
+            ->add('rolesList', ChoiceType::class, array(
                 'label'     => 'Role',
                 'choices'   => array(
                     'User'          => 'ROLE_USER',
@@ -29,7 +29,8 @@ class UserType extends AbstractType
                     'Admin'         => 'ROLE_ADMIN',
                     'Super Admin'   => 'ROLE_SUPER_ADMIN',
                 ),
-                'choices_as_values' => true
+                'choices_as_values' => true,
+                'mapped'            => false
             ))
         ;
     }

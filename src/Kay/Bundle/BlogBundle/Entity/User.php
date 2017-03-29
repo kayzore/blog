@@ -4,11 +4,12 @@ namespace Kay\Bundle\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -53,14 +54,14 @@ class User
     /**
      * @var array
      */
-    private $role;
+    private $roles;
 
     public function __construct()
     {
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
-        $this->roles = 'ROLE_USER';
+        $this->roles = array('ROLE_USER');
     }
 
 
@@ -223,19 +224,19 @@ class User
     /**
      * Set roles
      *
-     * @param string $role
+     * @param array $roles
      * @return User
      */
-    public function setRoles($role)
+    public function setRoles(array $roles)
     {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
     }
 
     public function getRoles()
     {
-        return $this->role;
+        return $this->roles;
     }
 
     public function eraseCredentials()
