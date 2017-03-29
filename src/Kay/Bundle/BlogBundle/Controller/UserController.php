@@ -2,18 +2,18 @@
 
 namespace Kay\Bundle\BlogBundle\Controller;
 
-use Kay\Bundle\BlogBundle\Entity\Post;
+use Kay\Bundle\BlogBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Post controller.
+ * User controller.
  *
  */
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
-     * Lists all Post entities.
+     * Lists all User entities.
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -21,113 +21,113 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $posts = $em->getRepository('KayBlogBundle:Post')->findAll();
+        $users = $em->getRepository('KayBlogBundle:User')->findAll();
 
-        return $this->render('KayBlogBundle:Post:index.html.twig', array(
-            'posts' => $posts,
+        return $this->render('KayBlogBundle:User:index.html.twig', array(
+            'users' => $users,
         ));
     }
 
     /**
-     * Creates a new Post entity.
+     * Creates a new User entity.
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
-        $post = new Post();
-        $form = $this->createForm('Kay\Bundle\BlogBundle\Form\PostType', $post);
+        $user = new User();
+        $form = $this->createForm('Kay\Bundle\BlogBundle\Form\UserType', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($post);
-            $em->flush($post);
+            $em->persist($user);
+            $em->flush($user);
 
-            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
-        return $this->render('KayBlogBundle:Post:new.html.twig', array(
-            'Post' => $post,
+        return $this->render('KayBlogBundle:User:new.html.twig', array(
+            'user' => $user,
             'form' => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Post entity.
+     * Finds and displays a User entity.
      *
-     * @param Post $post
+     * @param User $user
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction(Post $post)
+    public function showAction(User $user)
     {
-        $deleteForm = $this->createDeleteForm($post);
+        $deleteForm = $this->createDeleteForm($user);
 
-        return $this->render('KayBlogBundle:Post:show.html.twig', array(
-            'Post' => $post,
+        return $this->render('KayBlogBundle:User:show.html.twig', array(
+            'user' => $user,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Post entity.
+     * Displays a form to edit an existing User entity.
      *
      * @param Request $request
-     * @param Post $post
+     * @param User $user
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Post $post)
+    public function editAction(Request $request, User $user)
     {
-        $deleteForm = $this->createDeleteForm($post);
-        $editForm = $this->createForm('Kay\Bundle\BlogBundle\Form\PostType', $post);
+        $deleteForm = $this->createDeleteForm($user);
+        $editForm = $this->createForm('Kay\Bundle\BlogBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
+            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
         }
 
-        return $this->render('KayBlogBundle:Post:edit.html.twig', array(
-            'Post' => $post,
+        return $this->render('KayBlogBundle:User:edit.html.twig', array(
+            'user' => $user,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Deletes a Post entity.
+     * Deletes a User entity.
      *
      * @param Request $request
-     * @param Post $post
+     * @param User $user
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction(Request $request, Post $post)
+    public function deleteAction(Request $request, User $user)
     {
-        $form = $this->createDeleteForm($post);
+        $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($post);
+            $em->remove($user);
             $em->flush();
         }
 
-        return $this->redirectToRoute('post_index');
+        return $this->redirectToRoute('user_index');
     }
 
     /**
-     * Creates a form to delete a Post entity.
+     * Creates a form to delete a User entity.
      *
-     * @param Post $post The Post entity
+     * @param User $user The User entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Post $post)
+    private function createDeleteForm(User $user)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('post_delete', array('id' => $post->getId())))
+            ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

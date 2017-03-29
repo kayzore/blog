@@ -1,4 +1,7 @@
 kay_blog_post:
     resource: "@KayBlogBundle/Resources/config/routing/Post.yml"
-    prefix:   /Post
+    prefix:   /post
 
+kay_blog_user:
+    resource: "@KayBlogBundle/Resources/config/routing/user.yml"
+    prefix:   /user

@@ -2,3 +2,9 @@ kay_blog:
     resource: "@KayBlogBundle/Resources/config/routing.yml"
     prefix:   /
 
+login:
+    path:     /login
+    defaults: { _controller: KayBlogBundle:Security:login }
+
+logout:
+    path:     /logout

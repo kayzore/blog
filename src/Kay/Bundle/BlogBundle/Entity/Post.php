@@ -136,4 +136,32 @@ class Post
     {
         return $this->updatedAt;
     }
+    /**
+     * @var \Kay\Bundle\BlogBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \Kay\Bundle\BlogBundle\Entity\User $user
+     * @return Post
+     */
+    public function setUser(\Kay\Bundle\BlogBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Kay\Bundle\BlogBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
