@@ -53,7 +53,7 @@ class User
     /**
      * @var array
      */
-    private $roles;
+    private $role;
 
     public function __construct()
     {
@@ -220,9 +220,22 @@ class User
         return '';
     }
 
+    /**
+     * Set roles
+     *
+     * @param string $role
+     * @return User
+     */
+    public function setRoles($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
     public function getRoles()
     {
-        return $this->roles;
+        return $this->role;
     }
 
     public function eraseCredentials()
@@ -282,18 +295,5 @@ class User
     public function getPosts()
     {
         return $this->posts;
-    }
-
-    /**
-     * Set roles
-     *
-     * @param array $roles
-     * @return User
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
-
-        return $this;
     }
 }
