@@ -60,7 +60,7 @@ class User
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
-        $this->roles = array('ROLE_USER');
+        $this->roles = 'ROLE_USER';
     }
 
 

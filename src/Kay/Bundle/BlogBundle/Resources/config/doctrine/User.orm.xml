@@ -10,7 +10,7 @@
     <field name="password" type="string" column="password" length="64"/>
     <field name="email" type="string" column="email" length="60" unique="true"/>
     <field name="isActive" type="boolean" column="is_active"/>
-    <field name="roles" type="array" column="roles"/>
+    <field name="roles" type="string" column="roles" length="20"/>
     <one-to-many field="posts" target-entity="Kay\Bundle\BlogBundle\Entity\Post" mapped-by="user" />
   </entity>
 </doctrine-mapping>
