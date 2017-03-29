@@ -14,7 +14,8 @@ class PostController extends Controller
 {
     /**
      * Lists all Post entities.
-     *
+     * 
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
@@ -22,7 +23,7 @@ class PostController extends Controller
 
         $posts = $em->getRepository('KayBlogBundle:Post')->findAll();
 
-        return $this->render('Post/index.html.twig', array(
+        return $this->render('KayBlogBundle:Post:index.html.twig', array(
             'posts' => $posts,
         ));
     }
@@ -30,6 +31,8 @@ class PostController extends Controller
     /**
      * Creates a new Post entity.
      *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -45,7 +48,7 @@ class PostController extends Controller
             return $this->redirectToRoute('post_show', array('id' => $post->getId()));
         }
 
-        return $this->render('Post/new.html.twig', array(
+        return $this->render('KayBlogBundle:Post:new.html.twig', array(
             'Post' => $post,
             'form' => $form->createView(),
         ));
@@ -54,12 +57,14 @@ class PostController extends Controller
     /**
      * Finds and displays a Post entity.
      *
+     * @param Post $post
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Post $post)
     {
         $deleteForm = $this->createDeleteForm($post);
 
-        return $this->render('Post/show.html.twig', array(
+        return $this->render('KayBlogBundle:Post:show.html.twig', array(
             'Post' => $post,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -68,6 +73,9 @@ class PostController extends Controller
     /**
      * Displays a form to edit an existing Post entity.
      *
+     * @param Request $request
+     * @param Post $post
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Post $post)
     {
@@ -81,7 +89,7 @@ class PostController extends Controller
             return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
         }
 
-        return $this->render('Post/edit.html.twig', array(
+        return $this->render('KayBlogBundle:Post:edit.html.twig', array(
             'Post' => $post,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -91,6 +99,9 @@ class PostController extends Controller
     /**
      * Deletes a Post entity.
      *
+     * @param Request $request
+     * @param Post $post
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Post $post)
     {
