@@ -45,11 +45,22 @@ class User
      */
     private $isActive;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $posts;
+
+    /**
+     * @var array
+     */
+    private $roles;
+
     public function __construct()
     {
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
+        $this->roles = array('ROLE_USER');
     }
 
 
@@ -211,14 +222,13 @@ class User
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return $this->roles;
     }
 
     public function eraseCredentials()
     {
     }
 
-    /** @see \Serializable::serialize() */
     public function serialize()
     {
         return serialize(array(
@@ -230,7 +240,6 @@ class User
         ));
     }
 
-    /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
         list (
@@ -241,11 +250,6 @@ class User
             // $this->salt
             ) = unserialize($serialized);
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $posts;
-
 
     /**
      * Add posts
@@ -253,7 +257,7 @@ class User
      * @param \Kay\Bundle\BlogBundle\Entity\Post $posts
      * @return User
      */
-    public function addPost(\Kay\Bundle\BlogBundle\Entity\Post $posts)
+    public function addPost(Post $posts)
     {
         $this->posts[] = $posts;
 
@@ -265,7 +269,7 @@ class User
      *
      * @param \Kay\Bundle\BlogBundle\Entity\Post $posts
      */
-    public function removePost(\Kay\Bundle\BlogBundle\Entity\Post $posts)
+    public function removePost(Post $posts)
     {
         $this->posts->removeElement($posts);
     }
@@ -278,5 +282,18 @@ class User
     public function getPosts()
     {
         return $this->posts;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 }
