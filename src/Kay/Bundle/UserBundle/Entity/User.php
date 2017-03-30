@@ -1,8 +1,9 @@
 <?php
 
-namespace Kay\Bundle\BlogBundle\Entity;
+namespace Kay\Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Kay\Bundle\BlogBundle\Entity\Post;
 use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 use Symfony\Component\Security\Core\User\UserInterface;
 

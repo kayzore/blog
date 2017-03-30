@@ -1,6 +1,6 @@
 <?php
 
-namespace Kay\Bundle\BlogBundle\Form;
+namespace Kay\Bundle\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -41,7 +41,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Kay\Bundle\BlogBundle\Entity\User'
+            'data_class' => 'Kay\Bundle\UserBundle\Entity\User'
         ));
     }
 

@@ -3,6 +3,7 @@
 namespace Kay\Bundle\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Kay\Bundle\UserBundle\Entity\User;
 
 /**
  * Post
@@ -33,6 +34,11 @@ class Post
      * @var \DateTime
      */
     private $updatedAt;
+
+    /**
+     * @var \Kay\Bundle\UserBundle\Entity\User
+     */
+    private $user;
 
 
     /**
@@ -136,19 +142,14 @@ class Post
     {
         return $this->updatedAt;
     }
-    /**
-     * @var \Kay\Bundle\BlogBundle\Entity\User
-     */
-    private $user;
-
 
     /**
      * Set user
      *
-     * @param \Kay\Bundle\BlogBundle\Entity\User $user
+     * @param \Kay\Bundle\UserBundle\Entity\User $user
      * @return Post
      */
-    public function setUser(\Kay\Bundle\BlogBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 
@@ -158,7 +159,7 @@ class Post
     /**
      * Get user
      *
-     * @return \Kay\Bundle\BlogBundle\Entity\User 
+     * @return \Kay\Bundle\UserBundle\Entity\User
      */
     public function getUser()
     {

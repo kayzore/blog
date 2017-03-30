@@ -1,6 +1,6 @@
 <?php
 
-namespace Kay\Bundle\BlogBundle\Repository;
+namespace Kay\Bundle\UserBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

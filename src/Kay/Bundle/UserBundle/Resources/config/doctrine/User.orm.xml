@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity repository-class="Kay\Bundle\BlogBundle\Repository\UserRepository" name="Kay\Bundle\BlogBundle\Entity\User" table="users">
+  <entity repository-class="Kay\Bundle\UserBundle\Repository\UserRepository" name="Kay\Bundle\UserBundle\Entity\User" table="users">
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>

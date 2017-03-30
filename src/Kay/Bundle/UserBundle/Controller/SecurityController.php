@@ -1,5 +1,5 @@
 <?php
-namespace Kay\Bundle\BlogBundle\Controller;
+namespace Kay\Bundle\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

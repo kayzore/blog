@@ -1,0 +1,3 @@
+kay_blog_user:
+    resource: "@KayUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user

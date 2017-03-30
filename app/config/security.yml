@@ -1,14 +1,14 @@
 # http://symfony.com/doc/current/security.html
 security:
     encoders:
-        Kay\Bundle\BlogBundle\Entity\User:
+        Kay\Bundle\UserBundle\Entity\User:
             algorithm: bcrypt
             cost: 13
 
     providers:
         our_db_provider:
             entity:
-                class: KayBlogBundle:User
+                class: KayUserBundle:User
                 property: username
 
     firewalls:

@@ -1,8 +1,8 @@
 <?php
 
-namespace Kay\Bundle\BlogBundle\Controller;
+namespace Kay\Bundle\UserBundle\Controller;
 
-use Kay\Bundle\BlogBundle\Entity\User;
+use Kay\Bundle\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -21,9 +21,9 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $users = $em->getRepository('KayBlogBundle:User')->findAll();
+        $users = $em->getRepository('KayUserBundle:User')->findAll();
 
-        return $this->render('KayBlogBundle:User:index.html.twig', array(
+        return $this->render('KayUserBundle:User:index.html.twig', array(
             'users' => $users,
         ));
     }
@@ -37,7 +37,7 @@ class UserController extends Controller
     public function newAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm('Kay\Bundle\BlogBundle\Form\UserType', $user);
+        $form = $this->createForm('Kay\Bundle\UserBundle\Form\UserType', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -50,7 +50,7 @@ class UserController extends Controller
             return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
-        return $this->render('KayBlogBundle:User:new.html.twig', array(
+        return $this->render('KayUserBundle:User:new.html.twig', array(
             'user' => $user,
             'form' => $form->createView(),
         ));
@@ -66,7 +66,7 @@ class UserController extends Controller
     {
         $deleteForm = $this->createDeleteForm($user);
 
-        return $this->render('KayBlogBundle:User:show.html.twig', array(
+        return $this->render('KayUserBundle:User:show.html.twig', array(
             'user' => $user,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -82,7 +82,7 @@ class UserController extends Controller
     public function editAction(Request $request, User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('Kay\Bundle\BlogBundle\Form\UserType', $user);
+        $editForm = $this->createForm('Kay\Bundle\UserBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -91,7 +91,7 @@ class UserController extends Controller
             return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
         }
 
-        return $this->render('KayBlogBundle:User:edit.html.twig', array(
+        return $this->render('KayUserBundle:User:edit.html.twig', array(
             'user' => $user,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -1,10 +1,14 @@
+kay_user:
+    resource: "@KayUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 kay_blog:
     resource: "@KayBlogBundle/Resources/config/routing.yml"
     prefix:   /
 
 login:
     path:     /login
-    defaults: { _controller: KayBlogBundle:Security:login }
+    defaults: { _controller: KayUserBundle:Security:login }
 
 logout:
     path:     /logout

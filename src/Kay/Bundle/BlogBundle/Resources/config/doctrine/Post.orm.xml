@@ -8,7 +8,7 @@
     <field name="content" type="text" column="content"/>
     <field name="createdAt" type="datetime" column="created_at"/>
     <field name="updatedAt" type="datetime" column="updated_at"/>
-    <many-to-one field="user" target-entity="Kay\Bundle\BlogBundle\Entity\User" inversed-by="posts">
+    <many-to-one field="user" target-entity="Kay\Bundle\UserBundle\Entity\User" inversed-by="posts">
       <join-column name="user_id" referenced-column-name="id" />
     </many-to-one>
   </entity>
