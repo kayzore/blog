@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    {% stylesheets filter="uglifycss" output="compressed/css/style.css"
+    {% stylesheets filter="cssrewrite,uglifycss" output="compressed/css/style.css"
     '../vendor/external/libs/bootstrap/dist/css/bootstrap.css'
     '../vendor/external/libs/bootstrap/dist/css/bootstrap-theme.css'
     '@KayBlogBundle/Resources/public/css/*' %}
