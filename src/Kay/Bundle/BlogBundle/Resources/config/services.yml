@@ -1,5 +1,5 @@
 services:
-    form.post:
+    kay.blog.form.post:
         class: Kay\Bundle\BlogBundle\Form\PostType
         tags:
             - {name: form.type, alias: form_post}
