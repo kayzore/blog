@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/kayzore/blog#readme",
   "dependencies": {
-    "uglifycss": "0.0.25",
-    "uglifyjs": "^2.4.10"
+    "uglify-js": "^2.8.18",
+    "uglifycss": "0.0.25"
   }
 }

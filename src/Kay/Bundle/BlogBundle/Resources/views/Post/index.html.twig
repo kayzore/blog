@@ -1,5 +1,23 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {% stylesheets filter="uglifycss" output="compressed/css/style.css"
+    '../vendor/external/libs/bootstrap/dist/css/bootstrap.css'
+    '../vendor/external/libs/bootstrap/dist/css/bootstrap-theme.css'
+    '@KayBlogBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts filter="uglifyjs2" output="compressed/js/script.js"
+    '../vendor/external/libs/jquery/dist/jquery.js'
+    '../vendor/external/libs/bootstrap/dist/js/bootstrap.js'
+    '@KayBlogBundle/Resources/public/js/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
 {% block body %}
     <h1>Posts list</h1>
 
