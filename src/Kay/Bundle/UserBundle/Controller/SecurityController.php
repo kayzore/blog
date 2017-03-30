@@ -16,7 +16,7 @@ class SecurityController extends Controller
         // last username entered by the User
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('KayBlogBundle:Security:login.html.twig', array(
+        return $this->render('KayUserBundle:Security:login.html.twig', array(
             'last_username' => $lastUsername,
             'error'         => $error,
         ));
