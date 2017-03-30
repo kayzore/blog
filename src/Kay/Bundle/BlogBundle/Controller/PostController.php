@@ -37,13 +37,13 @@ class PostController extends Controller
     public function newAction(Request $request)
     {
         $post = new Post();
-        $form = $this->createForm('Kay\Bundle\BlogBundle\Form\PostType', $post);
+        $form = $this->createForm('form_post', $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
-            $em->flush($post);
+            $em->flush();
 
             return $this->redirectToRoute('post_show', array('id' => $post->getId()));
         }
@@ -80,7 +80,7 @@ class PostController extends Controller
     public function editAction(Request $request, Post $post)
     {
         $deleteForm = $this->createDeleteForm($post);
-        $editForm = $this->createForm('Kay\Bundle\BlogBundle\Form\PostType', $post);
+        $editForm = $this->createForm('form_post', $post);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

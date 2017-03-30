@@ -34,5 +34,9 @@ class PostType extends AbstractType
         return 'kay_bundle_blogbundle_post';
     }
 
+    public function getName()
+    {
+        return 'form_post';
+    }
 
 }
