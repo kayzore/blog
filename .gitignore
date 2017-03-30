@@ -13,3 +13,6 @@
 composer.lock
 web/assets/external/
 *.php~
+app/SymfonyRequirements.php
+app/check.php
+web/config.php
